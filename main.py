@@ -118,16 +118,7 @@ class LabelTool():
         self.goBtn.pack(side = LEFT)
 
 
-        # image list Treeview
-        self.egPanel = Frame(self.frame, border = 10)
-        self.egPanel.grid(row = 1, column = 0, rowspan = 5, sticky = N)
-        self.tmpLabel2 = Label(self.egPanel, text = "Examples:")
-        self.tmpLabel2.pack(side = TOP, pady = 5)
-        self.egLabels = []
-        # for i in range(3):
-        #     self.egLabels.append(Label(self.egPanel))
-        #     self.egLabels[-1].pack(side = TOP)
-
+        
         # display mouse position
         self.disp = Label(self.ctrPanel, text='')
         self.disp.pack(side = RIGHT)
@@ -153,10 +144,10 @@ class LabelTool():
         self.imageDir = os.path.join(r'./Images', '%03d' %(self.category))
         #print( self.imageDir )
         #print( self.category)
-        self.imageList = glob.glob(os.path.join(self.imageDir, '*.JPG'))
+        self.imageList = glob.glob(os.path.join(self.imageDir, '*'))
         #print( self.imageList)
         if len(self.imageList) == 0:
-            print( 'No .JPG images found in the specified dir!')
+            print( 'No images file found in the specified dir!')
             return
 
         # default to the 1st image in the collection
@@ -301,6 +292,7 @@ class LabelTool():
 
 if __name__ == '__main__':
     root = Tk()
+    root.iconbitmap('kcqr.ico')
     tool = LabelTool(root)
     root.resizable(width =  True, height = True)
     root.mainloop()
